@@ -1,0 +1,54 @@
+using System;
+class Product
+{
+    public int ProductId;
+    public string ProductName;
+    public string Category;
+
+    public Product(int id, string name, string category)
+    {
+        ProductId = id;
+        ProductName = name;
+        Category = category;
+    }
+}
+class Program
+{
+    static Product LinearSearch(Product[] products, string name)
+    {
+        foreach (Product product in products)
+        {
+            if (product.ProductName.Equals(name, StringComparison.OrdinalIgnoreCase))
+            {
+                return product;
+            }
+        }
+        return null;
+    }
+    static void Main()
+    {
+        Product[] products =
+        {
+            new Product(1, "Laptop", "Electronics"),
+            new Product(2, "Phone", "Electronics"),
+            new Product(3, "Shoes", "Fashion"),
+            new Product(4, "Watch", "Accessories")
+        };
+
+        string searchName = "Phone";
+
+        Product result = LinearSearch(products, searchName);
+
+        if (result != null)
+        {
+            Console.WriteLine("Product Found");
+            Console.WriteLine("ID: " + result.ProductId);
+            Console.WriteLine("Name: " + result.ProductName);
+            Console.WriteLine("Category: " + result.Category);
+        }
+        else
+        {
+            Console.WriteLine("Product Not Found");
+        }
+    }
+}
