@@ -1,0 +1,19 @@
+using System;
+class Program
+{
+    static double Forecast(double amount, double rate, int years)
+    {
+        if (years == 0)
+            return amount;
+
+        return Forecast(amount * (1 + rate / 100), rate, years - 1);
+    }
+    static void Main()
+    {
+        double initialAmount = 10000;
+        double growthRate = 8;
+        int years = 5;
+        double futureValue = Forecast(initialAmount, growthRate, years);
+        Console.WriteLine("Future Value: " + futureValue);
+    }
+}
